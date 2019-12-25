@@ -11,11 +11,10 @@ function* helloSaga() {
 export function* getUsers(){
     try {
         const res = yield axios.get('/attendance/users');
-        console.log(res['data']);
-
+        //console.log(res['data']);
         for(let i=0; i<res['data'].length; ++i){
-            console.log(res['data'][i]);
-            yield put(user_add(res['data'][i]));
+            //console.log(res['data'][i]);
+            yield put(user_add(i, res['data'][i]));
         }
     } catch (e) {
         console.log(e);

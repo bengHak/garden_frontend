@@ -6,6 +6,7 @@ const users = (state = [], action) => {
             return [
                 ...state,
                 {
+                    id: action.id,
                     name: action.name,
                 }
             ];
