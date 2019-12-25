@@ -8,9 +8,11 @@ function* helloSaga() {
 
 export function* getUsers(){
     try {
-        const test = yield call(fetch, process.env.HOST+'users/');
-        const json = yield test.json();
-        console.log(json);
+        //const test = yield call(fetch, 'http://'+process.env.MONGO_HOST+'/users/');
+        const test = yield call(fetch, '/attendance/users');
+        const json = yield test;
+        console.log(test);
+        console.log(json['body']);
     } catch (e) {
         console.log(e);
     }

@@ -1,23 +1,19 @@
 import { combineReducers } from 'redux'
 
-const movies = (state = [], action) => {
+const users = (state = [], action) => {
     switch (action.type) {
-        case 'LIST_ADD':
+        case 'USER_ADD':
             return [
                 ...state,
                 {
-                    id: action.id,
-                    title: action.title,
-                    overview: action.overview,
-                    poster: action.poster,
-                    genre: action.genre,
+                    name: action.name,
                 }
-            ]
+            ];
         default:
             return state
     }
-}
+};
 
 export default combineReducers({
-    movies,
-})
+    users,
+});
