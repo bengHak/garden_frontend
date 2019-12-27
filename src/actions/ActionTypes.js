@@ -1,4 +1,5 @@
-export const USER_REQUEST = 'USER_REQUEST';
-export const USER_SUCCESS = 'USER_SUCCESS';
-export const USER_FAILURE = 'USER_FAILURE';
+// 단순 유저 추가
 export const USER_ADD = 'USER_ADD';
+
+// 사용자 전체 출석 가져오기
+export const USER_ATT_ADD = 'USER_ATT_ADD';
