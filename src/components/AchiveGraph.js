@@ -1,7 +1,7 @@
 import React from 'react';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import gardenImg from './assets/img.jpg';
+import {connect} from "react-redux";
 
 class AchiveGraph extends React.Component {
     render(){
@@ -13,9 +13,9 @@ class AchiveGraph extends React.Component {
                     padding: '20px'
                 }}
             >
-                <CustomGraph color="#99c0ff"></CustomGraph>
-                <CustomGraph color="#fc857e"></CustomGraph>
-                <CustomGraph color="#84db87"></CustomGraph>
+                <CustomGraph color="#99c0ff"/>
+                <CustomGraph color="#fc857e"/>
+                <CustomGraph color="#84db87"/>
             </div>
         )
     }
@@ -50,4 +50,11 @@ class CustomGraph extends React.Component{
     }
 }
 
-export default AchiveGraph;
+const mapStateToProps = state => ({
+    users: state.users,
+    attendance: state.attendance,
+});
+
+export default connect(
+    mapStateToProps,
+)(AchiveGraph);
