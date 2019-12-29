@@ -8,6 +8,10 @@ class TodayAttendance extends React.Component{
             <div className="today_attendance">
             {this.props.attendance.map((att) =>{
                 console.log(att);
+                const today = new Date();
+                const todayString = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                console.log(todayString);
+
                 return (
                     <User
                         //각 위젯을 구별할 unique key 필요
