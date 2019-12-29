@@ -5,7 +5,9 @@ import {connect} from "react-redux";
 
 class AchiveGraph extends React.Component {
     render(){
-        
+        let total_attendance;
+        let toady_attendance;
+
         return (
             <div
                 style={{
@@ -13,9 +15,9 @@ class AchiveGraph extends React.Component {
                     padding: '20px'
                 }}
             >
-                <CustomGraph color="#99c0ff"/>
-                <CustomGraph color="#fc857e"/>
-                <CustomGraph color="#84db87"/>
+                <CustomGraph title="나의" color="#99c0ff"/>
+                <CustomGraph title="오늘" color="#fc857e"/>
+                <CustomGraph title="전체" color="#84db87"/>
             </div>
         )
     }
@@ -42,6 +44,8 @@ class CustomGraph extends React.Component{
                         })}
                 >
                     <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'black' }}>
+                        {this.props.title}
+                        <br/>
                         달성률 {percentage}%
                     </div>
                 </CircularProgressbarWithChildren>
