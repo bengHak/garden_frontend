@@ -32,12 +32,13 @@ const User = ({name, att}) => {
     const githubURL = 'http://github.com/'+name;
     const avatarImg = 'https://avatars.githubusercontent.com/'+name;
     const bgColor = att ? '#84db87' : '#ccc'
+    const opa = att ? 1 : 0.3;
 
     return (
-        <div className="User" style={{backgroundColor:bgColor}}>
+        <div className="User" style={{backgroundColor:bgColor, opacity:opa}}>
             <h5>{name}</h5>
             <a href={githubURL}>
-                <img src={avatarImg} width="100px"/>
+                <img src={avatarImg} style={{}} width="100px"/>
             </a>
             {
                 att ? <h5>출석 성공!</h5>: <h5>아직</h5>
