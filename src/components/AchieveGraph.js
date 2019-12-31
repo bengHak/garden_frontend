@@ -2,12 +2,8 @@ import React from 'react';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {connect} from "react-redux";
-<<<<<<< HEAD
-=======
-import TodayAttendance from './TodayAttendance';
->>>>>>> 0dc620f2c649b1a4cdb10354a9b5d31b6462281e
 
-class AchiveGraph extends React.Component {
+class AchieveGraph extends React.Component {
     render(){
         let total_attendance_count=0;
         let today_attendance_count=0;
@@ -35,15 +31,9 @@ class AchiveGraph extends React.Component {
                     padding: '20px'
                 }}
             >
-<<<<<<< HEAD
-                <CustomGraph color="#99c0ff"/>
-                <CustomGraph color="#fc857e"/>
-                <CustomGraph color="#84db87"/>
-=======
                 <CustomGraph title="나의" color="#99c0ff" percentage={18}/>
                 <CustomGraph title="오늘" color="#fc857e" percentage={Math.floor(today_attendance_count/today_attendance*100)}/>
                 <CustomGraph title="전체" color="#84db87" percentage={Math.floor(total_attendance_count/total_attendance*100)}/>
->>>>>>> 0dc620f2c649b1a4cdb10354a9b5d31b6462281e
             </div>
         )
     }
@@ -87,4 +77,4 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-)(AchiveGraph);
+)(AchieveGraph);

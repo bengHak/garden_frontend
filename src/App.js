@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import AchiveGraph from './components/AchiveGraph';
+import AchieveGraph from './components/AchieveGraph';
 import TodayAttendance from './components/TodayAttendance';
 import TotalAttendance from './components/TotalAttendance';
 import Rank from './components/Rank';
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <div className="main-body">
         <Header></Header>
-        <AchiveGraph></AchiveGraph>
+        <AchieveGraph></AchieveGraph>
         <TodayAttendance></TodayAttendance>
         <TotalAttendance></TotalAttendance>
         <Rank></Rank>
