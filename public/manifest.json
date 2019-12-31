@@ -1,19 +1,14 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "정원사들",
+  "name": "정원사들-HUFS",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "grass_32.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
+      "src": "grass_512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

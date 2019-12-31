@@ -4,9 +4,9 @@ import { user_add, att_add } from "./actions";
 
 require('dotenv').config();
 
-function* helloSaga() {
-    console.log('Hello Sagas!')
-}
+// function* helloSaga() {
+//     console.log('Hello Sagas!')
+// }
 
 // function* getAttendanceByDate(date){
 //     try {
