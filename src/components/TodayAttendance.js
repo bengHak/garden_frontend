@@ -11,7 +11,7 @@ class TodayAttendance extends React.Component{
                 <h2>오늘의 출석부</h2>
             {this.props.attendance.map((att) =>{
                 const today = new Date();
-                const todayString = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate());
+                const todayString = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate()-1);
                 const today_attendance = todayString in att['attendance'];
 
                 return (
@@ -31,12 +31,14 @@ class TodayAttendance extends React.Component{
 const User = ({name, att}) => {
     const githubURL = 'http://github.com/'+name;
     const avatarImg = 'https://avatars.githubusercontent.com/'+name;
+    const bgColor = att ? '#84db87' : '#ccc'
+    const opa = att ? 1 : 0.3;
 
     return (
-        <div className="User">
+        <div className="User" style={{backgroundColor:bgColor, opacity:opa}}>
             <h5>{name}</h5>
             <a href={githubURL}>
-                <img src={avatarImg} width="100px"/>
+                <img src={avatarImg} style={{}} width="100px"/>
             </a>
             {
                 att ? <h5>출석 성공!</h5>: <h5>아직</h5>
