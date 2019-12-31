@@ -15,7 +15,14 @@ class AchieveGraph extends React.Component {
         // console.log(attendance_data);
 
         const today = new Date();
-        const todayString = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate());
+        let month = ''+today.getMonth()+1;
+        let day = ''+today.getDate();
+
+        if(month.length < 2)
+            month = '0' + month;
+        if(day.length < 2)
+            day = '0' + day;
+        const todayString = today.getFullYear()+'-'+month+'-'+day;
 
         for(let i=0; i<attendance_data.length; ++i){
             total_attendance_count += Object.keys(attendance_data[i]['attendance']).length;
