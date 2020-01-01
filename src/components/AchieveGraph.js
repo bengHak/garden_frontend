@@ -4,12 +4,16 @@ import 'react-circular-progressbar/dist/styles.css';
 import {connect} from "react-redux";
 
 class AchieveGraph extends React.Component {
-    render(){
+    constructor() {
+        super();
+        this.state = {
+            bookmarked : false
+        }
+    }
+
+    getAttendance = () => {
         let total_attendance_count=0;
         let today_attendance_count=0;
-        const total_attendance = 21 * 24;
-        const today_attendance = 24; 
-
         const attendance_data  = this.props.attendance;
         // 최적화 어떻게 하면 좋을지???
         // console.log(attendance_data);
@@ -30,6 +34,21 @@ class AchieveGraph extends React.Component {
                 today_attendance_count += 1;
             }
         }
+
+        const returnValue  = {
+            'total_attendance_count': total_attendance_count,
+            'today_attendance_count': today_attendance_count
+        };
+
+        return returnValue;
+    }
+
+    render(){
+        const attendance_data = this.getAttendance();
+        const total_attendance_count = attendance_data['total_attendance_count'];
+        const today_attendance_count = attendance_data['today_attendance_count'];
+        const total_attendance = 21 * 24;
+        const today_attendance = 24;
 
         return (
             <div
