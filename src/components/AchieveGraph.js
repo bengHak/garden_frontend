@@ -132,8 +132,7 @@ class AchieveGraph extends React.Component {
             <>
                 {
                     this.state.bookmarked ?
-                        <>
-                        </>
+                        null
                         :
                         <div className='register-id'>
                             <input
@@ -161,7 +160,7 @@ class AchieveGraph extends React.Component {
                         this.state.bookmarked ?
                             <CustomGraph title={progressTitle} color="#99c0ff" percentage={progress}/>
                             :
-                            <></>
+                            null
                     }
                     <CustomGraph title="오늘" color="#fc857e" percentage={today_progress}/>
                     <CustomGraph title="전체" color="#84db87" percentage={total_progress}/>

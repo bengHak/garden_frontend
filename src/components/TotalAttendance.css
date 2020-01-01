@@ -1,0 +1,11 @@
+.daily-attendance {
+    position: relative;
+    display: inline-block;
+    background-color: #eee;
+    margin: 10px 5px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 10vw;
+    max-width: 100px;
+    height: 100px;
+}
