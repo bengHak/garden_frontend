@@ -20,7 +20,7 @@ class TodayAttendance extends React.Component{
                     day = '0' + day;
                 const todayString = today.getFullYear()+'-'+month+'-'+day;
                 const today_attendance = todayString in att['attendance'];
-                console.log(todayString);
+                // console.log(todayString);
 
                 return (
                     <User

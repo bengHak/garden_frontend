@@ -1,15 +1,53 @@
 import React from 'react';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import './AchieveGraph.css';
 import {connect} from "react-redux";
 
 class AchieveGraph extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            bookmarked : false
+    state = {
+        githubID: '',
+        bookmarked: false
+    };
+
+    calculateProgress = (id) => {
+        const attendance_data  = this.props.attendance;
+        const userInfo = attendance_data.find(row => {
+            if(row.username === id)
+                return row;
+        });
+
+        if(userInfo === undefined)
+            return false;
+        else {
+            return Math.floor(Object.keys(userInfo['attendance']).length / 21 * 100);
         }
-    }
+    };
+
+    getBookmarked = () => {
+        const githubID = localStorage.getItem('githubID');
+        if(githubID !== null){
+            return githubID;
+        }
+        else
+            return false;
+    };
+
+    bookmarkID = (id) => {
+        if(!(this.props.users.some( item => item.name === id)))
+            return false;
+        localStorage.setItem('githubID', id);
+        return true;
+    };
+
+    clearBookmark = () => {
+        localStorage.removeItem('githubID');
+        alert('ID 등록해제 되었습니다.');
+        this.setState({
+            ...this.state,
+            bookmarked: false
+        });
+    };
 
     getAttendance = () => {
         let total_attendance_count=0;
@@ -35,32 +73,100 @@ class AchieveGraph extends React.Component {
             }
         }
 
-        const returnValue  = {
+        return {
             'total_attendance_count': total_attendance_count,
             'today_attendance_count': today_attendance_count
         };
+    };
 
-        return returnValue;
-    }
+    handleChange = (e) => {
+        this.setState({
+            ...this.state,
+            "githubID": e.target.value
+        })
+    };
+
+    handleSubmit = () => {
+        if(this.bookmarkID(this.state.githubID)) {
+            this.setState({
+                ...this.state,
+                "bookmarked": true
+            });
+            alert(this.state.githubID + '님 환영합니다!');
+        }
+        else {
+            alert('존재하지 않는 ID입니다.');
+            // this.setState({
+            //     ...this.state,
+            //     "githubID": ''
+            // })
+        }
+    };
 
     render(){
         const attendance_data = this.getAttendance();
         const total_attendance_count = attendance_data['total_attendance_count'];
         const today_attendance_count = attendance_data['today_attendance_count'];
-        const total_attendance = 21 * 24;
-        const today_attendance = 24;
+        const total_attendance = 21 * 24; // 21일 24명
+        const today_attendance = 24; // 24명
+        const today_progress = Math.floor(today_attendance_count/today_attendance*100);
+        const total_progress = Math.floor(total_attendance_count/total_attendance*100);
+
+        // this.clearBookmark();
+        const bookMarkedID = this.getBookmarked();
+        let progress = 0;
+        let progressTitle = '';
+
+        if(bookMarkedID !== false) {
+            progress += this.calculateProgress(bookMarkedID);
+            progressTitle += bookMarkedID+'님의';
+            if(!(this.state.bookmarked)) {
+                this.setState({
+                    ...this.state,
+                    bookmarked: true
+                });
+            }
+        }
 
         return (
-            <div
-                style={{
-                    backgroundColor: '#BBB',
-                    padding: '20px'
-                }}
-            >
-                <CustomGraph title="나의" color="#99c0ff" percentage={18}/>
-                <CustomGraph title="오늘" color="#fc857e" percentage={Math.floor(today_attendance_count/today_attendance*100)}/>
-                <CustomGraph title="전체" color="#84db87" percentage={Math.floor(total_attendance_count/total_attendance*100)}/>
-            </div>
+            <>
+                {
+                    this.state.bookmarked ?
+                        <>
+                        </>
+                        :
+                        <div className='register-id'>
+                            <input
+                                className='register-input'
+                                type='text'
+                                name='githubID'
+                                placeholder='ID를 등록해주세요!'
+                                value={this.state.githubID}
+                                onChange={this.handleChange}
+                            />
+                            <button className='register-button' onClick={this.handleSubmit}>
+                                <span>등록</span>
+                            </button>
+                        </div>
+                }
+                <div
+                    style={{
+                        position: 'relative',
+                        backgroundColor: '#BBB',
+                        padding: '20px'
+                    }}
+                >
+                    { this.state.bookmarked ? <button className='unregister-button' onClick={this.clearBookmark}>ID등록해제</button> : <></>}
+                    {
+                        this.state.bookmarked ?
+                            <CustomGraph title={progressTitle} color="#99c0ff" percentage={progress}/>
+                            :
+                            <></>
+                    }
+                    <CustomGraph title="오늘" color="#fc857e" percentage={today_progress}/>
+                    <CustomGraph title="전체" color="#84db87" percentage={total_progress}/>
+                </div>
+            </>
         )
     }
 }

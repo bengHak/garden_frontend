@@ -1,0 +1,25 @@
+.unregister-button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #BBB;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.register-button {
+    background-color: gray(200);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.register-input {
+    margin: 10px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.2rem;
+}
