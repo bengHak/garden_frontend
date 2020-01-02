@@ -184,13 +184,13 @@ class CustomGraph extends React.Component{
                     backgroundPadding='3'
                     styles={buildStyles({
                         backgroundColor: thisColor,
-                        strokeLinecap: "butt",
+                        // strokeLinecap: "butt",
                         textColor: "#fff",
                         pathColor: "#fff",
                         trailColor: "transparent"
                         })}
                 >
-                    <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'black' }}>
+                    <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'black' }}>
                         {this.props.title}
                         <br/>
                         달성률 {percentage}%
