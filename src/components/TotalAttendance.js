@@ -1,5 +1,6 @@
 import React from 'react';
 import './TotalAttendance.css';
+import {connect} from "react-redux";
 
 class TotalAttendance extends React.Component{
     state = {
@@ -9,34 +10,21 @@ class TotalAttendance extends React.Component{
 
     buildCalendar = () => {
         const start = this.state.start_date;
+        const attendance = this.props.attendance;
+        const { dispatch } = this.props;
+
+        let days = [];
+        //dispatch({type: 'DATE_ADD_REQUEST', payload: {'date':'2019-12-31'}});
     };
 
     render() {
+        this.buildCalendar();
         return (
             <div className="TotalAttendance">
                 <br/>
                 <h2>출석부</h2>
-                <WeekAttendance week='1주차' className='week-attendance'/>
-                <WeekAttendance week='2주차' className='week-attendance'/>
-                <WeekAttendance week='3주차' className='week-attendance'/>
             </div>
         )
-    }
-}
-
-class WeekAttendance extends React.Component{
-    render() {
-        return (
-            <div>
-                <DailyAttendance className='daily-attendance'/>
-                <DailyAttendance className='daily-attendance'/>
-                <DailyAttendance className='daily-attendance'/>
-                <DailyAttendance className='daily-attendance'/>
-                <DailyAttendance className='daily-attendance'/>
-                <DailyAttendance className='daily-attendance'/>
-                <DailyAttendance className='daily-attendance'/>
-            </div>
-        );
     }
 }
 
@@ -74,4 +62,11 @@ class DailyAttendance extends React.Component {
     }
 }
 
-export default TotalAttendance;
+const mapStateToProps = state => ({
+    users: state.users,
+    attendance: state.attendance,
+});
+
+export default connect(
+    mapStateToProps,
+)(TotalAttendance);

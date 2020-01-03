@@ -1,6 +1,6 @@
-import { put, all} from 'redux-saga/effects'
+import { put, all, takeEvery} from 'redux-saga/effects'
 import axios from 'axios';
-import { user_add, att_add } from "./actions";
+import { user_add, att_add, date_add } from "./actions";
 
 require('dotenv').config();
 
@@ -8,15 +8,36 @@ require('dotenv').config();
 //     console.log('Hello Sagas!')
 // }
 
-// function* getAttendanceByDate(date){
-//     try {
-//         const res = yield axios.get('/attendance/get/'+date);
-//         yield put();
-//     }
-//     catch (e) {
-//         console.log(e);
-//     }
-// }
+function* getAttendanceByDate(action){
+    try {
+        let date_string = action.payload.date.split('-');
+        let formatted_date = '';
+        date_string.map(x => {
+           formatted_date += x;
+        });
+
+        const res = yield axios.get('/attendance/get/'+formatted_date);
+        console.log(res);
+
+        let user_list = [];
+        for(let i=0; i<res.data.length; ++i) {
+            user_list.push({
+                'user': res.data['user'],
+                'attendance': res.data['first_ts'],
+            });
+        }
+
+        yield put(date_add(action.payload.date, user_list));
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export function* getAttendanceByDateSaga() {
+    yield takeEvery("DATE_ADD_REQUEST", getAttendanceByDate);
+    console.log('saga')
+}
 
 export function* getTotalAttendance(){
     try {
@@ -47,6 +68,7 @@ export function* getUsers(){
 export default function* rootSaga() {
     yield all([
         getUsers(),
-        getTotalAttendance()
+        getTotalAttendance(),
+        getAttendanceByDateSaga()
     ]);
 }
