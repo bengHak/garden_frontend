@@ -37,7 +37,6 @@ class TotalAttendance extends React.Component{
 
     render() {
         console.log(this.props.dates);
-        this.sortDate();
         return (
             <div className="TotalAttendance">
                 <br/>
