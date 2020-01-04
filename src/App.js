@@ -37,8 +37,8 @@ class App extends React.Component {
         <TotalAttendance></TotalAttendance>
           <hr/>
         <Rank></Rank>
-        <button onClick={this.openModal}>Modal Open</button>
-        <Modal isOpen={this.state.isModalOpen} close={this.closeModal}/>
+        {/*<button onClick={this.openModal}>Modal Open</button>*/}
+        {/*<Modal isOpen={this.state.isModalOpen} close={this.closeModal}/>*/}
       </div>
     </div>
     );
