@@ -8,17 +8,36 @@ class TotalAttendance extends React.Component{
         period: 21
     };
 
+    componentDidMount() {
+        this.buildCalendar();
+    }
+
     buildCalendar = () => {
         const start = this.state.start_date;
         const attendance = this.props.attendance;
         const { dispatch } = this.props;
 
         let days = [];
-        //dispatch({type: 'DATE_ADD_REQUEST', payload: {'date':'2019-12-31'}});
+        let date = new Date(this.state.start_date);
+        for(let i=0; i<this.state.period; ++i) {
+            let month = ''+(date.getMonth()+1);
+            let day = ''+date.getDate();
+
+            if(month.length < 2)
+                month = '0' + month;
+            if(day.length < 2)
+                day = '0' + day;
+            const dateString = date.getFullYear()+'-'+month+'-'+day;
+
+            // console.log(dateString);
+            dispatch({type: 'DATE_ADD_REQUEST', payload: {'date':dateString}});
+            date.setDate(date.getDate()+1);
+        }
     };
 
     render() {
-        this.buildCalendar();
+        console.log(this.props.dates);
+        this.sortDate();
         return (
             <div className="TotalAttendance">
                 <br/>
@@ -65,6 +84,7 @@ class DailyAttendance extends React.Component {
 const mapStateToProps = state => ({
     users: state.users,
     attendance: state.attendance,
+    dates: state.dates,
 });
 
 export default connect(

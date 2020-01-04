@@ -13,7 +13,7 @@ export const att_add = (id, name, attendance) => ({
     attendance: attendance,
 });
 
-export const date_add = (id,date, user_list) => ({
+export const date_add = (date, user_list) => ({
     type: types.DATE_ADD,
     date: date,
     user_list: user_list

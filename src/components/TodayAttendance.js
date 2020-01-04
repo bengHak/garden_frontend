@@ -11,7 +11,7 @@ class TodayAttendance extends React.Component{
                 <h2>오늘의 출석부</h2>
             {this.props.attendance.map((att) =>{
                 const today = new Date();
-                let month = ''+today.getMonth()+1;
+                let month = ''+(today.getMonth()+1);
                 let day = ''+today.getDate();
 
                 if(month.length < 2)
@@ -20,7 +20,7 @@ class TodayAttendance extends React.Component{
                     day = '0' + day;
                 const todayString = today.getFullYear()+'-'+month+'-'+day;
                 const today_attendance = todayString in att['attendance'];
-                // console.log(todayString);
+                //console.log(todayString);
 
                 return (
                     <User

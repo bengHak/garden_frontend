@@ -17,13 +17,13 @@ function* getAttendanceByDate(action){
         });
 
         const res = yield axios.get('/attendance/get/'+formatted_date);
-        console.log(res);
+        // console.log(res);
 
         let user_list = [];
         for(let i=0; i<res.data.length; ++i) {
             user_list.push({
-                'user': res.data['user'],
-                'attendance': res.data['first_ts'],
+                'user': res['data'][i]['user'],
+                'attendance': res['data'][i]['first_ts'],
             });
         }
 
