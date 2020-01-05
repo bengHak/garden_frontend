@@ -17,7 +17,6 @@ class TotalAttendance extends React.Component{
         const attendance = this.props.attendance;
         const { dispatch } = this.props;
 
-        let days = [];
         let date = new Date(this.state.start_date);
         for(let i=0; i<this.state.period; ++i) {
             let month = ''+(date.getMonth()+1);
@@ -35,8 +34,18 @@ class TotalAttendance extends React.Component{
         }
     };
 
+    sortByDate = (dates) => {
+        dates.sort((a, b)=>{
+            return new Date(a.date) - new Date(b.date);
+        });
+    };
+
+
     render() {
-        console.log(this.props.dates);
+        if(this.props.dates.length === 21){
+            this.sortByDate(this.props.dates);
+            console.log(this.props.dates);
+        }
         return (
             <div className="TotalAttendance">
                 <br/>
