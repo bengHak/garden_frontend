@@ -20,7 +20,7 @@ class AchieveGraph extends React.Component {
         if(userInfo === undefined)
             return false;
         else {
-            return Math.floor(Object.keys(userInfo['attendance']).length / 21 * 100);
+            return Math.floor((Object.keys(userInfo['attendance']).length-1) / 21 * 100);
         }
     };
 
@@ -67,6 +67,10 @@ class AchieveGraph extends React.Component {
         const todayString = today.getFullYear()+'-'+month+'-'+day;
 
         for(let i=0; i<attendance_data.length; ++i){
+            console.log(attendance_data);
+	    if(attendance_data.length < 1) {
+	        break;
+	    }
             total_attendance_count += Object.keys(attendance_data[i]['attendance']).length;
             if(todayString in attendance_data[i]['attendance']){
                 today_attendance_count += 1;
