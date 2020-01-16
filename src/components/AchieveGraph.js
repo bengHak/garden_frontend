@@ -16,11 +16,15 @@ class AchieveGraph extends React.Component {
             if(row.username === id)
                 return row;
         });
-
+	console.log(userInfo);
         if(userInfo === undefined)
             return false;
         else {
-            return Math.floor((Object.keys(userInfo['attendance']).length-1) / 21 * 100);
+	    let count = Object.keys(userInfo['attendance']).length; 
+            if (userInfo['attendance']['2020-01-14'] != undefined) {
+                count -= 1;
+	    }
+            return Math.floor(count / 21 * 100);
         }
     };
 
@@ -67,7 +71,7 @@ class AchieveGraph extends React.Component {
         const todayString = today.getFullYear()+'-'+month+'-'+day;
 
         for(let i=0; i<attendance_data.length; ++i){
-            console.log(attendance_data);
+           // console.log(attendance_data);
 	    if(attendance_data.length < 1) {
 	        break;
 	    }
