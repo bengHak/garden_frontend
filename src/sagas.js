@@ -2,12 +2,6 @@ import { call, put, all, takeEvery} from 'redux-saga/effects'
 import axios from 'axios';
 import { user_add, att_add, date_add } from "./actions";
 
-//require('dotenv').config();
-
-// function* helloSaga() {
-//     console.log('Hello Sagas!')
-// }
-
 function* getAttendanceByDate(action){
     try {
         let date_string = action.payload.date.split('-');
@@ -17,7 +11,6 @@ function* getAttendanceByDate(action){
         });
 
         const res = yield axios.get('/attendance/get/'+formatted_date);
-	//console.log('getAttendanceByDate');
         console.log(res);
 
         let user_list = [];
@@ -37,14 +30,12 @@ function* getAttendanceByDate(action){
 
 export function* getAttendanceByDateSaga() {
     yield takeEvery("DATE_ADD_REQUEST", getAttendanceByDate);
-    console.log('saga')
 }
 
 export function* getTotalAttendance(){
     try {
 	    const res = yield axios.get('/attendance/gets');
 	    console.log(res);
-
         for(let i=0; i<res.data.length; ++i){
             yield put(att_add(i, res['data'][i]['user'], res['data'][i]['attendances']));
         }
@@ -57,9 +48,7 @@ export function* getTotalAttendance(){
 export function* getUsers(){
     try {
         const res = yield axios.get('/attendance/users');
-        //console.log(res['data']);
         for(let i=0; i<res['data'].length; ++i){
-            //console.log(res['data'][i]);
             yield put(user_add(i, res['data'][i]));
         }
     } catch (e) {
