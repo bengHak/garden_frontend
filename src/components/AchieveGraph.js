@@ -159,7 +159,7 @@ class AchieveGraph extends React.Component {
                 <div
                     style={{
                         position: 'relative',
-                        backgroundColor: '#BBB',
+                        // backgroundColor: '#BBB',
                         padding: '20px'
                     }}
                 >
