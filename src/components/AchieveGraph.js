@@ -16,7 +16,7 @@ class AchieveGraph extends React.Component {
             if(row.username === id)
                 return row;
         });
-	console.log(userInfo);
+	// console.log(userInfo);
         if(userInfo === undefined)
             return false;
         else {
