@@ -1,11 +1,17 @@
-.daily-attendance {
-    position: relative;
-    display: inline-block;
-    background-color: #eee;
-    margin: 10px 5px;
-    padding: 10px;
-    border-radius: 5px;
-    width: 7vw;
-    max-width: 80px;
-    height: 100px;
+.attendanceTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 3px;
+}
+
+.attend {
+    background-color: yellowgreen;
+}
+
+.absent {
+    background-color: brown;
+}
+
+.none {
+    background-color: gainsboro;
 }
