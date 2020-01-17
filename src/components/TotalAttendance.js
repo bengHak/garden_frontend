@@ -102,7 +102,9 @@ class TotalAttendance extends React.Component{
         return (
             <div className="TotalAttendance">
                 <br/>
-                <h2>출석부</h2>
+                <h1>전체 출석부</h1>
+                <h4>2차: 2020.01.15 ~ 2020.02.05</h4>
+                <h3>한 시간에 한번씩 갱신됩니다!</h3>
                 <table className="attendanceTable">
                    {
                        this.state.data ? this.buildCalendar() : null

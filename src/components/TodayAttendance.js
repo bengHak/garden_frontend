@@ -8,7 +8,8 @@ class TodayAttendance extends React.Component{
             <div className="today_attendance">
                 <br/>
                 <br/>
-                <h2>오늘의 출석부</h2>
+                <h1>오늘의 출석부</h1>
+                <h3>한 시간에 한번씩 갱신됩니다!</h3>
             {this.props.attendance.map((att) =>{
                 const today = new Date();
                 let month = ''+(today.getMonth()+1);
