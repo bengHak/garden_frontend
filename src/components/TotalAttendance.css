@@ -4,6 +4,13 @@
     border-spacing: 3px;
 }
 
+.thead {
+    height: 35px;
+    background-color: rgb(97, 97, 97);
+    color: white;
+    font-weight: bold;
+}
+
 .attend {
     background-color: yellowgreen;
 }

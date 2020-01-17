@@ -44,7 +44,7 @@ class TotalAttendance extends React.Component{
                 thead.push(<th>{i+1}</th>);
             }
         }
-        table.push(<tr>{thead}</tr>)
+        table.push(<tr className="thead">{thead}</tr>)
 
         for(let i=0; i<this.state.data.length; i++){
             let row = [];
