@@ -31,7 +31,9 @@ class App extends React.Component {
     <div className="App">
       <div className="main-body">
         <Header></Header>
+          <hr/>
         <AchieveGraph></AchieveGraph>
+          <hr/>
         <TodayAttendance></TodayAttendance>
           <hr/>
         <TotalAttendance></TotalAttendance>

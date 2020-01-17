@@ -4,3 +4,8 @@
     width: 90vw;
     /* background-color: blue; */
 }
+
+hr {
+    border: dashed 1.5px black;
+    width: 90%;
+}

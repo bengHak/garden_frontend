@@ -1,10 +1,10 @@
 .unregister-button {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 0px;
+    left: 50px;
     /* background-color: #BBB; */
     border: none;
-    color: white;
+    color: rgb(128, 128, 128);
     text-decoration: none;
     font-size: 1.2rem;
 }
