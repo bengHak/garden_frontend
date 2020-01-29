@@ -111,6 +111,12 @@ class AchieveGraph extends React.Component {
         }
     };
 
+    handleKeyPress = (e) => {
+        if(e.key === 'Enter') {
+            this.handleSubmit();
+        }
+    }
+
     render(){
         const attendance_data = this.getAttendance();
         const total_attendance_count = attendance_data['total_attendance_count'];
@@ -150,6 +156,7 @@ class AchieveGraph extends React.Component {
                                 placeholder='ID를 등록해주세요!'
                                 value={this.state.githubID}
                                 onChange={this.handleChange}
+                                onKeyPress={this.handleKeyPress}
                             />
                             <button className='register-button' onClick={this.handleSubmit}>
                                 <span>등록</span>
