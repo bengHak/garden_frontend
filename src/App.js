@@ -1,11 +1,8 @@
 import React from 'react';
-import Header from './components/Header';
-import AchieveGraph from './components/AchieveGraph';
-import TodayAttendance from './components/TodayAttendance';
-import TotalAttendance from './components/TotalAttendance';
-import Rank from './components/Rank';
 
-import Modal from './components/Modal';
+import { Route } from 'react-router-dom';
+import NewPage from "./components/NewPage";
+import Home from "./components/Home";
 
 import './App.css';
 
@@ -18,30 +15,11 @@ class App extends React.Component {
     }
   }
 
-  openModal = () => {
-    this.setState({ isModalOpen: true });
-  }
-
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
-  }
-
   render(){
     return (
     <div className="App">
-      <div className="main-body">
-        <Header></Header>
-          <hr/>
-        <AchieveGraph></AchieveGraph>
-          <hr/>
-        <TodayAttendance></TodayAttendance>
-          <hr/>
-        <TotalAttendance></TotalAttendance>
-          <hr/>
-        <Rank></Rank>
-        {/*<button onClick={this.openModal}>Modal Open</button>*/}
-        {/*<Modal isOpen={this.state.isModalOpen} close={this.closeModal}/>*/}
-      </div>
+      <Route exact path="/" component={Home}/>
+      <Route path="/new" component={NewPage}/>
     </div>
     );
   }
