@@ -36,10 +36,10 @@ class TotalAttendance extends React.Component{
 
         for(let i=0; i<attendance_data.length - 1; i++) {
             for(let j=0; j<attendance_data.length - 1; j++) {
-                if(Object.keys(attendance_data[i]['attendances']).length < Object.keys(attendance_data[i+1]['attendances']).length ) {
-                    let temp = attendance_data[i];
-                    attendance_data[i] = attendance_data[i+1];
-                    attendance_data[i+1] = temp;
+                if(Object.keys(attendance_data[j]['attendances']).length < Object.keys(attendance_data[j+1]['attendances']).length ) {
+                    let temp = attendance_data[j];
+                    attendance_data[j] = attendance_data[j+1];
+                    attendance_data[j+1] = temp;
                 }
             }
         }
