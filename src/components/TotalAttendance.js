@@ -4,7 +4,7 @@ import axios from 'axios';
 
 class TotalAttendance extends React.Component{
     state = {
-        start_date: '2020-01-15',
+        start_date: '2020-02-06',
         period: 21
     };
 
@@ -54,7 +54,7 @@ class TotalAttendance extends React.Component{
             let attendance_cnt = Object.keys(this.state.data[i].attendances).length;
             let attendance_ratio;
 
-            if('2020-01-14' in this.state.data[i].attendances) {
+            if('2020-02-05' in this.state.data[i].attendances) {
                 // console.log('전날 커밋');
                 attendance_cnt -= 1;
             }
@@ -103,7 +103,7 @@ class TotalAttendance extends React.Component{
             <div className="TotalAttendance">
                 <br/>
                 <h1>전체 출석부</h1>
-                <h4>2차: 2020.01.15 ~ 2020.02.05</h4>
+                <h4>3차: 2020.02.06 ~ 2020.02.27</h4>
                 <h3>한 시간에 한번씩 갱신됩니다!</h3>
                 <table className="attendanceTable">
                    {
