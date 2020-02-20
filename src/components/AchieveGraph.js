@@ -21,7 +21,7 @@ class AchieveGraph extends React.Component {
             return false;
         else {
 	    let count = Object.keys(userInfo['attendance']).length; 
-            if (userInfo['attendance']['2020-01-14'] != undefined) {
+            if (userInfo['attendance']['2020-02-05'] != undefined) {
                 count -= 1;
 	    }
             return Math.floor(count / 21 * 100);
