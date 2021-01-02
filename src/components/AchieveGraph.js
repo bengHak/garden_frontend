@@ -86,7 +86,6 @@ class AchieveGraph extends React.Component {
       if (attendance_data.length < 1) {
         break;
       }
-      console.log(attendance_data[i]["commits"]);
       total_attendance_count += Object.keys(attendance_data[i]["commits"])
         .length;
       if (todayString in attendance_data[i]["commits"]) {

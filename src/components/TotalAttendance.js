@@ -5,7 +5,7 @@ import { getKoreaDateString } from "../libs";
 
 class TotalAttendance extends React.Component {
   state = {
-    start_date: "2021-1-1",
+    start_date: "2021-01-01",
     period: 29,
   };
 
@@ -20,15 +20,6 @@ class TotalAttendance extends React.Component {
         data: res.data,
       });
     });
-  };
-
-  getDateString = (date) => {
-    return date
-      .toLocaleString("ko-KR")
-      .split(".")
-      .map((e) => e.trim())
-      .slice(0, 3)
-      .join("-");
   };
 
   buildCalendar = () => {
@@ -72,8 +63,10 @@ class TotalAttendance extends React.Component {
       let row = [];
       let today = new Date(getKoreaDateString(new Date()));
       let startDateObject = new Date(this.state.start_date);
+      console.log(today);
+      console.log(startDateObject);
       let diff =
-        Math.round(Math.abs(startDateObject - today) / 1000 / 60 / 60 / 24) + 1;
+        Math.round((today - startDateObject) / (1000 * 60 * 60 * 24)) + 1;
       let attendance_cnt = Object.keys(attendance_data[i].commits).length;
       let attendance_ratio = Math.round((attendance_cnt / diff) * 100);
 
@@ -82,7 +75,7 @@ class TotalAttendance extends React.Component {
       row.push(<td>{attendance_ratio}%</td>);
 
       let date = this.state.start_date;
-      let todaySting = this.getDateString(new Date());
+      let todaySting = getKoreaDateString(new Date());
       console.log(todaySting);
 
       for (let j = 0; j < this.state.period; j++) {
@@ -104,7 +97,7 @@ class TotalAttendance extends React.Component {
         }
         let newDate = new Date(date);
         newDate.setDate(newDate.getDate() + 1);
-        date = this.getDateString(newDate);
+        date = getKoreaDateString(newDate);
       }
 
       table.push(<tr>{row}</tr>);
