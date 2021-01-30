@@ -14,6 +14,9 @@ class AchieveGraph extends React.Component {
     githubID: "",
     bookmarked: false,
     attendance: {},
+    period: 26,
+    start_date: "2021-02-01",
+    end_date: "2021-02-26",
   };
 
   componentDidMount() {
@@ -65,7 +68,7 @@ class AchieveGraph extends React.Component {
     if (userInfo === undefined) return false;
     else {
       let count = Object.keys(userInfo["commits"]).length;
-      return Math.floor((count / 21) * 100);
+      return Math.floor((count / period) * 100);
     }
   };
 
@@ -132,7 +135,8 @@ class AchieveGraph extends React.Component {
     const attendance_data = this.getAttendance();
     const total_attendance_count = attendance_data["total_attendance_count"];
     const today_attendance_count = attendance_data["today_attendance_count"];
-    const total_attendance = 29 * Object.keys(this.state.attendance).length; // 29일 인원수
+    const total_attendance =
+      this.state.period * Object.keys(this.state.attendance).length; // 29일 인원수
     const today_attendance = Object.keys(this.state.attendance).length; // 인원수
     const today_progress = Math.floor(
       (today_attendance_count / today_attendance) * 100
