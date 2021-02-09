@@ -24,12 +24,14 @@ class AchieveGraph extends React.Component {
   }
 
   getData = () => {
-    axios.get("/v1/gets/2021-01-01/2021-01-29/").then((res) => {
-      this.setState({
-        ...this.state,
-        attendance: res.data,
+    axios
+      .get(`/v1/gets/${this.state.start_date}/${this.state.end_date}/`)
+      .then((res) => {
+        this.setState({
+          ...this.state,
+          attendance: res.data,
+        });
       });
-    });
   };
 
   getBookmarked = () => {
@@ -68,7 +70,7 @@ class AchieveGraph extends React.Component {
     if (userInfo === undefined) return false;
     else {
       let count = Object.keys(userInfo["commits"]).length;
-      return Math.floor((count / period) * 100);
+      return Math.floor((count / this.state.period) * 100);
     }
   };
 

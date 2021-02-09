@@ -6,6 +6,7 @@ import { getKoreaDateString } from "../libs";
 class TotalAttendance extends React.Component {
   state = {
     start_date: "2021-01-01",
+    end_date: "2021-01-31",
     period: 29,
   };
 
@@ -14,12 +15,14 @@ class TotalAttendance extends React.Component {
   }
 
   getData = () => {
-    axios.get("/v1/gets/2021-01-01/2021-01-29/").then((res) => {
-      console.log(res.data);
-      this.setState({
-        data: res.data,
+    axios
+      .get(`/v1/gets/${this.state.start_date}/${this.state.end_date}/`)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          data: res.data,
+        });
       });
-    });
   };
 
   buildCalendar = () => {
